@@ -10,7 +10,7 @@ A web application accessble by an URL containing two pages:
 - Add Product
 
 ## Required procedure
-Using the power of PHP + OOP paradigm to handle the variations between different products.
+Using the power of OOP paradigm to handle the variations between different products.
 
 ## My result
 I implemented the MVC (Model-View-Controller) pattern using the OOP paradigm for better separation of concerns and easier management.

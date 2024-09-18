@@ -2,9 +2,7 @@
 
 namespace Mali\Validation;
 
-use Mali\Validation\Rules\BetweenRule;
 use Mali\Validation\Rules\Contract\Rule;
-use Mali\Validation\Rules\RequiredRule;
 
 class Validator
 {
