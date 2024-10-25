@@ -5,10 +5,13 @@ namespace App\Controllers;
 use App\Models\Product;
 use Mali\Validation\Validator;
 use View\products\contract\ProductUI;
-
+use View\products\Book as Book;
+use View\products\DVD as DVD;
+use View\products\Furniture as Furniture;
 
 class AddProductController
 {
+    const viewProductNamespace = 'View\\products\\';
     public function index()
     {
         return view('AddProduct');
@@ -27,7 +30,7 @@ class AddProductController
         $data = request()->all();
         
         // Get type class
-        $classType = 'View\\products\\' . $data['type'];
+        $classType = self::viewProductNamespace . $data['type'];
         $classType = new $classType();
         
         $rules = [

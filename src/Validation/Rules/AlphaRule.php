@@ -8,7 +8,7 @@ class AlphaRule implements Rule
 {
     public function apply($field, $value, $data = [])
     {
-        return preg_match('/^[a-zA-Z][a-zA-Z ]*$/', $value);
+        return preg_match('/^[a-zA-Z][a-zA-Z0-9 ]*$/', $value);
     }
 
     public function __toString()

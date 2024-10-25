@@ -32,7 +32,6 @@ class Route
     {
         $path = $this->request->path();
         $method = $this->request->method();
-        $options = $this->request->options();
         $action = self::$routes[$method][$path] ?? false;
 
         if(!array_key_exists($path, self::$routes[$method]))
@@ -48,12 +47,24 @@ class Route
 
         if(is_callable($action))
         {
-            call_user_func_array($action, $options);
+            call_user_func_array($action, $this->hasParams($action) ? $_GET : []);
         }
 
         if(is_array($action))
         {
-            call_user_func_array([new $action[0], $action[1]], $options);
+            call_user_func_array([new $action[0], $action[1]], $this->hasParams($action) ? $_GET : []);
         }
+    }
+
+    private function hasParams($function) : bool
+    {
+        if(is_array($function)) {
+            $reflection = new ReflectionMethod($function[0], $function[1]);
+        }
+        else {
+            $reflection = new ReflectionFunction($function);
+        }
+
+        return $reflection->getNumberOfParameters() > 0;
     }
 }
